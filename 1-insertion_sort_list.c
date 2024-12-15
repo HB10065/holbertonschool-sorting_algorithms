@@ -1,60 +1,54 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - applies the insertion sort algorithm to double linked list
+ * swap - applies the insertion sort algorithm to double linked list
+ * @a: Head of double linked list
+ * @b: anshe
+ */
+
+void swap(listint_t *a, listint_t *b)
+{
+	if (a->prev)
+		a->prev->next = b;
+
+	if (b->next)
+		b->next->prev = a;
+	a->next = b->next;
+	b->prev = a->prev;
+	a->prev = b;
+	b->next = a;
+}
+
+/**
+ * insertion_sort_list - applies the insertion sort algorithm to double linked
  * @list: Head of double linked list
  */
+
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *comp, *print = (*list);
+	listint_t *i, *j;
 
-	comp = (*list)->next;
-	while (comp != NULL)
+	if (!list || !*list || !(*list)->next)
+		return;
+
+	i = (*list)->next;
+
+	while (i)
 	{
-		if ((*list)->n > comp->n)
+		j = i;
+		i = i->next;
+		while (j && j->prev)
 		{
-			if ((*list)->prev == NULL)
+			if (j->prev->n > j->n)
 			{
-				(*list)->next = comp->next;
-				comp->next = (*list);
-				comp->prev = NULL;
-				(*list)->prev = comp;
-				(*list)->next->prev = (*list);
+				swap(j->prev, j);
+				if (!j->prev)
+					*list = j;
 
-				comp = comp->next;
-				(*list) = (*list)->prev;
-				print = (*list);
-			}
-			else if (comp->next == NULL)
-			{
-				(*list)->next = NULL;
-				comp->next = (*list);
-				(*list)->prev->next = comp;
-				comp->prev = (*list)->prev;
-				(*list)->prev = comp;
-
-				(*list) = comp->prev;
+				print_list((const listint_t *)*list);
 			}
 			else
-			{
-				(*list)->next = comp->next;
-				comp->next = (*list);
-				(*list)->prev->next = comp;
-				comp->prev = (*list)->prev;
-				(*list)->prev = comp;
-				(*list)->next->prev = (*list);
-
-				(*list) = comp->prev;
-			}
-			print_list(print);
-		}
-		else
-		{
-			comp = comp->next;
-			(*list) = (*list)->next;
+				j = j->prev;
 		}
 	}
-	while((*list)->prev != NULL)
-		(*list) = (*list)->prev;
-	print_list((*list));
 }
