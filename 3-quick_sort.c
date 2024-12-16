@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * quick_sort - Ordena un arreglo de enteros en orden ascendente usando Quick Sort
@@ -38,6 +39,7 @@ void quick_sort_recursive(int *array, int inicio, int end, size_t size)
  * @inicio: Índice inicial de la partición
  * @end: Índice final de la partición
  * @size: Tamaño del arreglo
+ * 
  * Return: La posición final del pivote
  */
 int lomuto_partition(int *array, int inicio, int end, size_t size)
@@ -59,7 +61,6 @@ int lomuto_partition(int *array, int inicio, int end, size_t size)
 			}
 		}
 	}
-
 	if (array[i + 1] != array[end])
 	{
 		temp = array[i + 1];
