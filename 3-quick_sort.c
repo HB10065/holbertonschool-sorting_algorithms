@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 /**
- * quick_sort - Ordena un arreglo de enteros en orden ascendente usando Quick Sort
- * @array: Puntero al arreglo
- * @size: Tamaño del arreglo
+ * quick_sort - ordena un arreglo de enteros usando quick sort
+ * @array: puntero al arreglo
+ * @size: tamaño del arreglo
  */
 void quick_sort(int *array, size_t size)
 {
@@ -15,9 +15,9 @@ void quick_sort(int *array, size_t size)
 }
 
 /**
- * quick_sort_recursive - Ordena recursivamente el arreglo usando Quick Sort
- * @array: Puntero al arreglo
- * @inicio: Índice inicial de la partición
+ * quick_sort_recursive - ordena recursivamente el arreglo usando quick sort
+ * @array: puntero al arreglo
+ * @inicio: inicio de la partición
  * @end: Índice final de la partición
  * @size: Tamaño del arreglo
  */
@@ -39,7 +39,6 @@ void quick_sort_recursive(int *array, int inicio, int end, size_t size)
  * @inicio: Índice inicial de la partición
  * @end: Índice final de la partición
  * @size: Tamaño del arreglo
- * 
  * Return: La posición final del pivote
  */
 int lomuto_partition(int *array, int inicio, int end, size_t size)
