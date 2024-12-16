@@ -14,23 +14,23 @@ void quick_sort(int *array, size_t size)
 }
 
 /**
- * quick_sort_recursive - Helper function to implement Quick Sort recursively
- * @array: Array to sort
- * @low: Start index
- * @high: End index
- * @size: Total size of the array
+ * quick_sort_recursive - hace el swap
+ * @array: pointer al array inicio del array
+ * @inicio: inicio del array
+ * @end: final del array
+ * @size: tamaño del array
  */
-void quick_sort_recursive(int *array, int low, int high, size_t size)
+void quick_sort_recursive(int *array, int inicio, int end, size_t size)
 {
 	int i, j, pivot, temp;
 
-	if (low >= high)
+	if (inicio >= end)
 		return;
 
-	pivot = array[high];
-	i = low - 1;
+	pivot = array[end];
+	i = end - 1;
 
-	for (j = low; j < high; j++)
+	for (j = inicio; j < end; j++)
 	{
 		if (array[j] < pivot)
 		{
@@ -42,11 +42,11 @@ void quick_sort_recursive(int *array, int low, int high, size_t size)
 	}
 
 	temp = array[i + 1];
-	array[i + 1] = array[high];
-	array[high] = temp;
+	array[i + 1] = array[end];
+	array[end] = temp;
 
 	print_array(array, size);
 
-	quick_sort_recursive(array, low, i, size);
-	quick_sort_recursive(array, i + 2, high, size);
+	quick_sort_recursive(array, inicio, i, size);
+	quick_sort_recursive(array, i + 2, end, size);
 }
