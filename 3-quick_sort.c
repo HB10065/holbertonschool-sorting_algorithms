@@ -1,9 +1,9 @@
 #include "sort.h"
 
 /**
- * quick_sort - sorts an array of integers in ascending order using quick sort
- * @array: pointer al inicio del array
- * @size: tamaño del array
+ * quick_sort - Sorts an array of integers in ascending order using Quick Sort
+ * @array: Pointer to the array
+ * @size: Size of the array
  */
 void quick_sort(int *array, size_t size)
 {
@@ -14,11 +14,11 @@ void quick_sort(int *array, size_t size)
 }
 
 /**
- * quick_sort_recursive - sort an array using quick sort
- * @array: pointer sl inicio del array
+ * quick_sort_recursive - hace el swap
+ * @array: pointer al array inicio del array
  * @inicio: inicio del array
- * @end: fin del array
- * @size: Size of the array
+ * @end: final del array
+ * @size: tamaño del array
  */
 void quick_sort_recursive(int *array, int inicio, int end, size_t size)
 {
@@ -32,7 +32,7 @@ void quick_sort_recursive(int *array, int inicio, int end, size_t size)
 
 	for (j = inicio; j < end; j++)
 	{
-		if (array[j] <= pivot)
+		if (array[j] < pivot)
 		{
 			i++;
 			temp = array[i];
